@@ -1,0 +1,99 @@
+<!--
+ Copyright (c) 2014, 2020, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+ 
+  <STYLE TYPE="text/css">
+
+      .oj-listview-item {
+          padding: 0em !important;
+      }
+      
+      .oj-text-field {
+          max-width: 100em !important;
+      }
+      
+      .oj-searchselect {
+          max-width: 100em !important;
+      }
+    
+</STYLE>
+
+ 
+<div class="oj-hybrid-padding">
+  <h1>New Account</h1>
+  <hr>
+  
+  <br>  
+  
+    <div class="oj-flex-item"> 
+        
+        <div id="tableWrapper" class="oj-xl-4 oj-lg-4 oj-md-12 oj-sm-12 oj-flex-item oj-flex"> 
+        
+            <oj-form-layout id="myForm" label-edge="start" columns="1" max-columns="1" style="width:100%">
+                
+                    <oj-select-single 
+                        id="client" 
+                        label-hint="Cliente"                    
+                        value="{{client}}"                        
+                        required
+                        item-text="[[getItemText]]"
+                        data="[[clients]]">
+                        <template slot="itemTemplate" data-oj-as="item">
+                            <oj-list-item-layout style="padding:0em">                              
+                                <span>
+                                  <oj-bind-text value="[[item.data.name]]"></oj-bind-text>
+                                </span>                       
+                            </oj-list-item-layout>
+                        </template>
+                    </oj-select-single>               
+
+                    <oj-select-single 
+                        id="holding" 
+                        label-hint="Holding"                    
+                        value="{{holding}}"                        
+                        required
+                        item-text="[[getItemText]]"                        
+                        data="[[holdings]]">
+                        <template slot="itemTemplate" data-oj-as="item">
+                            <oj-list-item-layout style="padding:0em">                              
+                                <span>
+                                  <oj-bind-text value="[[item.data.name]]"></oj-bind-text>
+                                </span>                            
+                            </oj-list-item-layout>
+                        </template>
+                    </oj-select-single>
+                
+                    <oj-input-text 
+                        id="user"                                                 
+                        label-hint="User"                        
+                        value='{{user}}'
+                        required="required">                            
+                    </oj-input-text>
+                
+                    <oj-input-text 
+                        id="password" 
+                        label-hint="Password"                        
+                        value='{{password}}'
+                        required="required">                            
+                    </oj-input-text>
+                
+                    <oj-input-text 
+                        id="company" 
+                        label-hint="Company"                        
+                        value='{{company}}'>                            
+                    </oj-input-text>
+                                
+                
+                    <div slot="footer" style="text-align: right">
+                        <oj-button id="backBtn" on-oj-action="[[goToAccounts]]">Back</oj-button>
+                        <oj-button id="submitBtn" chroming="callToAction" on-oj-action="[[createItem]]">Submit</oj-button>
+                    </div>
+
+            </oj-form-layout>
+            
+        </div>
+      
+    </div>   
+</div>
